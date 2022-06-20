@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <form   class= "mb-3 offset-4 border bg-dark w-25 p-3 mt-5">
+            <div class="mb-3"  >
+                <input type="email" placeholder=" Enter your Email" id="email" class="form-control" name="email" onchange="" />
+                <div style="color:red" id="em"></div>
+            </div>
+            <div class="mb-3"  >
+                <input type="password" placeholder=" Enter your Password" id="pass" class="form-control" name="pass" onchange="" />
+                <div style="color:red" id="ps"></div>
+            </div>
+            <div class="mb-3">
+                <input type ="password" placeholder="Enter your Confirm Password" id="confirm_pass" class="form-control" name="confirm_pass" onchange=""/>
+                <div style = "color:red" id="confirm_ps"></div>
+            </div>
+            <button type="button" onclick="handleClick()">submit</button>
+        </form>
+        <script>
+            let handleClick = ()=>{
+               // console.log('ok')
+                let email = document.getElementById('email').value
+                //console.log(email);
+                var email_formet = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+                let pass = document.getElementById('pass').value
+                //console.log(pass);
+                let confirm_pass = document.getElementById('confirm_pass').value
+                //console.log(confirm_pass);
+                let em = document.getElementById('em')
+                let ps = document.getElementById('ps')
+                let confirm_ps = document.getElementById('confirm_ps')
+                if(!email && !pass && !confirm_pass){
+                    //console.log('empty');
+                    em.innerHTML ='** Please Enter Your Email';
+                    ps.innerHTML = "** Please Enter Your Password";
+                    confirm_ps.innerHTML = "** Please Enter Your Conffirm Password"
+
+                }else{
+                    if(!email || !pass || !confirm_pass){
+                        // console.log('or condition')
+                        if(!email){
+                            em.innerHTML ='** Please Enter Your Email';
+                        }else{
+                            if(!email_formet.test(email)){
+                                // console.log("mail correct")
+                                em.innerHTML =' invalid email ';
+                            }else{
+                                // console.log('not correct')
+                                em.innerHTML = " "
+                            }
+                        }if(!pass){
+                            ps.innerHTML = "** Please Enter Your Password";
+                        }else{
+                            if(pass.length < 8){
+                            ps.innerHTML = "password is most contant in 8 latter ";
+                            
+                            }else{
+                            ps.innerHTML = " ";
+                            
+                        }
+                        if(!confirm_pass){
+                            confirm_ps.innerHTML = "** Please Enter Your Conffirm Password";
+                        }else{
+                            confirm_ps.innerHTML = " ";
+                        }
+                    }
+                        
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
+<!-- console.log('hello')
+                if(email.length == ''){
+
+                }
+                if(pass.length < 5){
+                    ps.innerHTML = "** password is most contant in 5 latter"; 
+                }
+                if(pass == confirm_pass){
+                    return true;
+                }else
+                confirm_ps.innerHTML = "** Please Enter Your Password is Same"
+                
+                 -->
